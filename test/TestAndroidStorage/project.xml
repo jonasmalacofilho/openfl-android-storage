@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	
+	<meta title="TestAndroidStorage" package="com.sample.testandroidstorage" version="1.0.0" company="Company Name" />
+	<app main="Main" path="Export" file="TestAndroidStorage" />
+	
+	<source path="Source" />
+	
+	<haxelib name="openfl" />
+	<haxelib name="assertion" />
+	<haxelib name="openfl-android-storage" />
+	
+	<assets path="Assets" rename="assets" />
+	
+</project>
