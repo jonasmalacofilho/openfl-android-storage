@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	<haxelib name="assertion" />
+	<section if="android">
+		<dependency name="AndroidStorage" path="dependencies/android" if="android" />
+		<android extension="org.haxe.extension.AndroidStorage" />
+		<config:android target-sdk-version="21" />
+	</section>
+</project>
+

@@ -1,0 +1,14 @@
+{
+	"name" : "openfl-android-storage",
+	"url" : "https://github.com/jonasmalacofilho/openfl-android-storage",
+	"license" : "BSD",
+	"tags" : ["android"],
+	"description" : "FIXME",
+	"version" : "0.0.1",
+	"releasenote" : "FIXME",
+	"contributors" : ["jonasmalacofilho", "protocubo"],
+	"dependencies" : {
+		"openfl" : ""
+	}
+}
+
