@@ -9,7 +9,5 @@
 	<haxelib name="openfl" />
 	<haxelib name="assertion" />
 	<haxelib name="openfl-android-storage" />
-	
-	<assets path="Assets" rename="assets" />
-	
 </project>
+
