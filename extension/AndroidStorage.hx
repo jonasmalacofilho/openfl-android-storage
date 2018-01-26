@@ -43,8 +43,8 @@ class AndroidStorage {
 				info.removable = _isExternalStorageRemovable(path);
 				info.probablyRemovable = info.removable;
 			} else if (alts.length == 0) {
-				info.emulated = _isPrimaryExternalStorageEmulated(path);
-				info.removable = _isPrimaryExternalStorageRemovable(path);
+				info.emulated = _isPrimaryExternalStorageEmulated();
+				info.removable = _isPrimaryExternalStorageRemovable();
 				info.probablyRemovable = info.removable;
 			} else {
 				info.probablyRemovable = !alts[0].removable;
@@ -80,7 +80,7 @@ class AndroidStorage {
 			JNI.createStaticMethod("org.haxe.extension.AndroidStorage",
 					"getExternalFilesDirs", "(Ljava/lang/String;)[Ljava/lang/String;");
 
-	static var _isPrimaryExternalStorageEmulated:String->Bool =
+	static var _isPrimaryExternalStorageEmulated:Void->Bool =
 			JNI.createStaticMethod("org.haxe.extension.AndroidStorage",
 					"isPrimaryExternalStorageEmulated", "()Z");
 
@@ -88,7 +88,7 @@ class AndroidStorage {
 			JNI.createStaticMethod("org.haxe.extension.AndroidStorage",
 					"isExternalStorageEmulated", "(Ljava/lang/String;)Z");
 
-	static var _isPrimaryExternalStorageRemovable:String->Bool =
+	static var _isPrimaryExternalStorageRemovable:Void->Bool =
 			JNI.createStaticMethod("org.haxe.extension.AndroidStorage",
 					"isPrimaryExternalStorageRemovable", "()Z");
 
