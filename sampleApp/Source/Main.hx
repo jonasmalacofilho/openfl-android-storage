@@ -16,14 +16,13 @@ class Main extends Sprite {
 		errCnt = 0;
 		try {
 			runExternalStorageExample();
-		} catch (e1:Dynamic) {
-			trace("FAILED");
-			show(e1);
+		} catch (err:Dynamic) {
+			trace("FAILED: " + err + haxe.CallStack.toString(haxe.CallStack.exceptionStack()));
 			errCnt++;
 		}
-		trace("EXECUTION RESULT: " + (errCnt == 0 ? "all good" : "ERROR"));
+		trace(errCnt == 0 ? "all good!" : "FAILED : \\");
 #else
-		trace("Nothing to show for !android builds");
+		trace("Nothing to show for builds other than android");
 #end
 	}
 
@@ -32,6 +31,7 @@ class Main extends Sprite {
 		/* get the available paths for external storage */
 		var ext = extension.AndroidStorage.getExternalStorage();
 		show(ext.length);
+		assert(ext.length >= 1, "there should be at least one external storage, even if emulated");
 
 		for (i in ext) {
 			show(i);
@@ -57,8 +57,7 @@ class Main extends Sprite {
 				FileSystem.rename(tpath, tpath + ".1");
 				show(FileSystem.stat(tpath + ".1"));
 			} catch (err:Dynamic) {
-				trace("FAILED");
-				show(err);
+				trace("FAILED: " + err + haxe.CallStack.toString(haxe.CallStack.exceptionStack()));
 				errCnt++;
 			}
 		}
