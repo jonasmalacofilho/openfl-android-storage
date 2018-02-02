@@ -16,8 +16,9 @@ class Main extends Sprite {
 		errCnt = 0;
 		try {
 			runExternalStorageExample();
+			stressTestJNI();
 		} catch (err:Dynamic) {
-			trace("FAILED: " + err + haxe.CallStack.toString(haxe.CallStack.exceptionStack()));
+			trace("FAILED: " + err + exceptionStack());
 			errCnt++;
 		}
 		trace(errCnt == 0 ? "all good!" : "FAILED : \\");
@@ -57,10 +58,26 @@ class Main extends Sprite {
 				FileSystem.rename(tpath, tpath + ".1");
 				show(FileSystem.stat(tpath + ".1"));
 			} catch (err:Dynamic) {
-				trace("FAILED: " + err + haxe.CallStack.toString(haxe.CallStack.exceptionStack()));
+				trace("FAILED: " + err + exceptionStack());
 				errCnt++;
 			}
 		}
+	}
+
+	function stressTestJNI()
+	{
+		var its = 1000;
+		for (i in 0...its) {
+			if (i % 100 == 0 || (i < 100 && i % 10 == 0) || i < 10)
+				trace('call #${i+1} to getExternalStorage');
+			extension.AndroidStorage.getExternalStorage();
+		}
+		trace('$its calls to getExternalStorage and no JNI issues');
+	}
+
+	static function exceptionStack()
+	{
+		return haxe.CallStack.toString(haxe.CallStack.exceptionStack());
 	}
 }
 
