@@ -3,7 +3,7 @@
 	<haxelib name="assertion" />
 	<section if="android">
 		<dependency name="AndroidStorage" path="dependencies/android" if="android" />
-		<android extension="org.haxe.extension.AndroidStorage" />
+		<android extension="org.haxe.storage.AndroidStorage" />
 		<config:android target-sdk-version="21" />
 	</section>
 </project>

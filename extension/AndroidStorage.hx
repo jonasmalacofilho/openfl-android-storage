@@ -2,9 +2,13 @@ package extension;
 
 import Assertion.*;
 
-#if android
+#if (android && openfl_legacy)
 import openfl.utils.JNI;
+#elseif android
+import lime.system.JNI;
 #end
+
+
 
 typedef StorageInfo = {
 	path : String,
@@ -77,27 +81,27 @@ class AndroidStorage {
 
 	#if android
 	static var _getExternalFilesDirs:Null<String>->Array<Dynamic> =
-			JNI.createStaticMethod("org.haxe.extension.AndroidStorage",
+			JNI.createStaticMethod("org.haxe.storage.AndroidStorage",
 					"getExternalFilesDirs", "(Ljava/lang/String;)[Ljava/lang/String;");
 
 	static var _isPrimaryExternalStorageEmulated:Void->Bool =
-			JNI.createStaticMethod("org.haxe.extension.AndroidStorage",
+			JNI.createStaticMethod("org.haxe.storage.AndroidStorage",
 					"isPrimaryExternalStorageEmulated", "()Z");
 
 	static var _isExternalStorageEmulated:String->Bool =
-			JNI.createStaticMethod("org.haxe.extension.AndroidStorage",
+			JNI.createStaticMethod("org.haxe.storage.AndroidStorage",
 					"isExternalStorageEmulated", "(Ljava/lang/String;)Z");
 
 	static var _isPrimaryExternalStorageRemovable:Void->Bool =
-			JNI.createStaticMethod("org.haxe.extension.AndroidStorage",
+			JNI.createStaticMethod("org.haxe.storage.AndroidStorage",
 					"isPrimaryExternalStorageRemovable", "()Z");
 
 	static var _isExternalStorageRemovable:String->Bool =
-			JNI.createStaticMethod("org.haxe.extension.AndroidStorage",
+			JNI.createStaticMethod("org.haxe.storage.AndroidStorage",
 					"isExternalStorageRemovable", "(Ljava/lang/String;)Z");
 
 	static var _getStorageStats:String->Array<Float> =
-			JNI.createStaticMethod("org.haxe.extension.AndroidStorage",
+			JNI.createStaticMethod("org.haxe.storage.AndroidStorage",
 					"getStorageStats", "(Ljava/lang/String;)[D");
 
 	static var _SDK_INT:Int =

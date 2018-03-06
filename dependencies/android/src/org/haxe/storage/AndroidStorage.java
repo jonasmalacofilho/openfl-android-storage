@@ -1,4 +1,4 @@
-package org.haxe.extension;
+package org.haxe.storage;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,6 +10,8 @@ import android.os.Handler;
 import android.os.StatFs;
 import android.view.View;
 import java.io.File;
+
+import org.haxe.extension.Extension;
 
 public class AndroidStorage extends Extension {
 	/**
